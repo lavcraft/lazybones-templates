@@ -1,5 +1,6 @@
 buildscript {
   repositories {
+    jcenter()
     maven {
       url "http://dl.bintray.com/pledbrook/plugins"
     }
@@ -10,7 +11,13 @@ buildscript {
   }
 }
 
+repositories {
+  mavenLocal()
+  jcenter()
+}
+
 apply plugin: "uk.co.cacoethes.lazybones-templates"
+apply plugin: 'groovy'
 
 lazybones {
   repositoryName = "<account>/<templates-repo>"
@@ -25,6 +32,10 @@ lazybones {
   // and `project.bintrayApiKey` respectively.
   repositoryUsername = "your_bintray_username"
   repositoryApiKey = "your_bintray_api_key"
+}
+
+dependencies {
+  compile 'org.codehaus.groovy:groovy-all:2.4.5'
 }
 
 task wrapper(type: Wrapper){
