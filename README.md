@@ -21,4 +21,9 @@ UI, and finally publish the templates with
 
 You can find out more about creating templates on [the GitHub wiki][1].
 
+Example usage:
+
+```
+lazybones create <template name> 0.0.1 <target_dir>
+```
 [1]: https://github.com/pledbrook/lazybones/wiki/Template-developers-guide
