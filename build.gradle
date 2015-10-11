@@ -30,6 +30,11 @@ lazybones {
   //
   // You could then set the following properties to `project.bintrayUsername`
   // and `project.bintrayApiKey` respectively.
+
+  template('ms-base') {
+    fileMode "755", "gradlew", "**/*.sh"
+  }
+
   repositoryUsername = "your_bintray_username"
   repositoryApiKey = "your_bintray_api_key"
 }
