@@ -51,4 +51,7 @@ try {
     }
 } catch (ignored) {
     ignored.printStackTrace()
+    println '^'*50
+    println 'ignored exception'.center(50,'^')
+    println '^'*50
 }
