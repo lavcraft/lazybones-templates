@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy
 @SpringBootApplication
 @EnableZuulProxy
 @EnableDiscoveryClient
-public class GatewayApplication {
+public class Application {
     public static final int DEFAULT_PADDING = 50
 
     public static void main(String[] args) {

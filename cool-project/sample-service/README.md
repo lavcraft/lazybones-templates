@@ -1,3 +1,0 @@
-# ${projectName}
-
-beautiful ${projectName} service

@@ -15,15 +15,15 @@ buildscript {
         }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:\${springBootVersion}")
         classpath 'com.netflix.nebula:gradle-extra-configurations-plugin:2.2.+'
-        classpath "com.bmuschko:gradle-docker-plugin:${dockerPluginVersion}"
+        classpath "com.bmuschko:gradle-docker-plugin:\${dockerPluginVersion}"
         classpath "ru.trylogic.gradle.plugins:gradle-thrift-plugin:0.1.1"
     }
 }
 
-group = "ru.joker"
-version = "0.0.1"
+group = "${group}"
+version = "${version}"
 
 ext {
     thriftVersion = '0.9.2'
@@ -48,7 +48,7 @@ allprojects {
 
         dependencies {
             dependency 'org.codehaus.groovy:groovy-all:2.4.5'
-            dependency "org.apache.thrift:libthrift:${thriftVersion}"
+            dependency "org.apache.thrift:libthrift:\${thriftVersion}"
             dependency 'info.developerblog.spring.thrift:spring-thrift-starter:0.0.2'
             dependency 'info.developerblog.spring.thrift:spring-thrift-api-gateway:0.0.1'
 
@@ -113,7 +113,7 @@ subprojects {
                 (OperatingSystem.MAC_OS) : 'osx'
         ].withDefault { 'nix' }
 
-        thrift "org.apache.thrift:thrift:$thriftVersion:${platformMapping.get(OperatingSystem.current())}@bin"
+        thrift "org.apache.thrift:thrift:\$thriftVersion:\${platformMapping.get(OperatingSystem.current())}@bin"
 
         compile 'org.codehaus.groovy:groovy-all'
 
@@ -124,7 +124,7 @@ subprojects {
 
     task dockerBuild << {
         exec {
-            commandLine 'docker', 'build', '--force-rm=true', "--tag='${project.name}'", '.'
+            commandLine 'docker', 'build', '--force-rm=true', "--tag='\${project.name}'", '.'
         }
     }
 
