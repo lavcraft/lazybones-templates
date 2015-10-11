@@ -1,15 +1,15 @@
-package $
-
-{ group }
+package ${ group }
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
 public class Application {
+    public static final int DEFAULT_PADDING = 50
+
     public static void main(String[] args) {
-        println 'Starting'.center(100, '=')
+        println 'Starting'.center(DEFAULT_PADDING, '=')
         SpringApplication.run Application, args
-        println 'Stopped'.center(100, '=')
+        println 'Started'.center(DEFAULT_PADDING, '=')
     }
 }

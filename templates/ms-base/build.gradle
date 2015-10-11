@@ -112,6 +112,10 @@ subprojects {
             commandLine 'docker', 'build', '--force-rm=true', "--tag='\${project.name}'", '.'
         }
     }
+
+    springBoot {
+        executable = true
+    }
 }
 
 task wrapper(type: Wrapper) {
