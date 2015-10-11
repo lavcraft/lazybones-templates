@@ -16,4 +16,5 @@ dependencies {
 //    compile "org.springframework.cloud:spring-cloud-consul-config"
 
 //    compile 'info.developerblog.spring.thrift:spring-thrift-starter'
+//    compile 'info.developerblog.spring.thrift:spring-thrift-api-gateway'
 }
