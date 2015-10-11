@@ -26,9 +26,6 @@ groovySourceDirWithPackage.toFile() mkdirs()
 
 try {
     move templateApplicationPath, destinationAppFilePath
-    println '-' * 100
-    println projectDir.toPath()
-    println '-' * 100
 
     Path newSettingsPath = projectDir.toPath().parent.resolve('settings.gradle')
     File newSettingsFile = newSettingsPath.toFile()
@@ -38,9 +35,6 @@ try {
     }
 
     def currentConfigDump = newSettingsFile.text
-    println 'Current config'.center(100, '=')
-    println currentConfigDump
-    println 'End current config'.center(100, '=')
 
     newSettingsFile.withWriter { writer ->
         currentConfigDump.eachLine { line ->
