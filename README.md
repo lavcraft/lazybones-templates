@@ -26,4 +26,12 @@ Example usage:
 ```
 lazybones create <template name> 0.0.1 <target_dir>
 ```
+
+```
+lazybones create ms-base 0.0.1 root_project
+cd root_project
+lazybones create ms-sub 0.0.1 my-service-0
+lazybones create ms-sub 0.0.1 my-service-1
+lazybones create ms-sub 0.0.1 my-service-3
+```
 [1]: https://github.com/pledbrook/lazybones/wiki/Template-developers-guide
