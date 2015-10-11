@@ -14,6 +14,7 @@ String mainApplicationFileName = 'Application.groovy'
 processTemplates "build.gradle", props
 processTemplates mainApplicationFileName, props
 processTemplates 'Dockerfile', props
+processTemplates 'README.md', props
 
 String pkgPath = props.group.replace('.' as char, '/' as char)
 
