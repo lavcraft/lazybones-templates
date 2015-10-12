@@ -30,7 +30,7 @@ sample-service:
   ports:
     - "8080"
   environment:
-    - "SERVICE_NAME=fee-service"
+    - "SERVICE_NAME=sample-service"
     - "SERVICE_CHECK_HTTP=/health"
     - "SPRING_PROFILES_ACTIVE=consul"
   restart: always
