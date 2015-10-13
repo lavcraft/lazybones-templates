@@ -50,7 +50,7 @@ allprojects {
             dependency 'org.codehaus.groovy:groovy-all:2.4.5'
             dependency "org.apache.thrift:libthrift:\${thriftVersion}"
             dependency 'info.developerblog.spring.thrift:spring-thrift-starter:0.1.2'
-            dependency 'info.developerblog.spring.thrift:spring-thrift-api-gateway:0.0.2'
+            dependency 'info.developerblog.spring.thrift:spring-thrift-api-gateway:0.0.3'
 
             dependency "org.springframework.cloud:spring-cloud-consul-core:1.0.0.M1"
             dependency "org.springframework.cloud:spring-cloud-consul-discovery:1.0.0.M1"
