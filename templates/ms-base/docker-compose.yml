@@ -1,36 +1,25 @@
-gateway-server:
-  image: gateway-server
-  container_name: gateway-server
-  ports:
-    - "9000:9000"
-  restart: always
-
-consul:
-  image: gliderlabs/consul-server
-  container_name: consul
-  ports:
-    - "8400:8400"
-    - "8500:8500"
-    - "53:8600/udp"
-  command: "-bootstrap -advertise ${dockerHost} -ui-dir /ui"
-  restart: always
-
-registrator:
-  image: gliderlabs/registrator
-  container_name: registrator
-  net: "host"
-  volumes:
-    - "/var/run/docker.sock:/tmp/docker.sock"
-  command: "-ip ${dockerHost} consul://${dockerHost}:8500"
-  restart: always
-
-sample-service:
-  image: sample-service
-  dns: ${dns}
-  ports:
-    - "8080"
-  environment:
-    - "SERVICE_NAME=sample-service"
-    - "SERVICE_CHECK_HTTP=/health"
-    - "SPRING_PROFILES_ACTIVE=consul"
-  restart: always
+#gateway-server:
+#  image: gateway-server
+#  container_name: gateway-server
+#  ports:
+#    - "9000:9000"
+#  restart: always
+#
+#consul:
+#  image: gliderlabs/consul-server
+#  container_name: consul
+#  ports:
+#    - "8400:8400"
+#    - "8500:8500"
+#    - "53:8600/udp"
+#  command: "-bootstrap -advertise ${dockerHost} -ui-dir /ui"
+#  restart: always
+#
+#registrator:
+#  image: gliderlabs/registrator
+#  container_name: registrator
+#  net: "host"
+#  volumes:
+#    - "/var/run/docker.sock:/tmp/docker.sock"
+#  command: "-ip ${dockerHost} consul://${dockerHost}:8500"
+#  restart: always

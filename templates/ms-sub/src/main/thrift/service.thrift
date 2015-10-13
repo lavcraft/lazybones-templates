@@ -8,8 +8,6 @@ struct TFbiResponse {
 
 service TFbiService {
     TFbiResponse fink(
-        1: required auth.TAuthToken token, 2: required i32 hippoCount, 3: required i32 fee
-    ) throws (
-        99: auth.TUnauthorizedException ue
+        1: required auth.TUser user, 2: required i32 hippoCount, 3: required i32 fee
     )
 }
