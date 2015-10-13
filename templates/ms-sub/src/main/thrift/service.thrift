@@ -2,10 +2,14 @@ namespace java info.developerblog.services.user
 
 include "auth.thrift"
 
-struct TFee {
-    1: required i32 fee
+struct TFbiResponse {
+    1: required string lastFink
 }
 
-service TFeeService {
-    TFee calculateFee(1: required auth.TUser user, 2: required i32 hippoCount)
+service TFbiService {
+    TFbiResponse fink(
+        1: required auth.TAuthToken token, 2: required i32 hippoCount, 3: required i32 fee
+    ) throws (
+        99: auth.TUnauthorizedException ue
+    )
 }
