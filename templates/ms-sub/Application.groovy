@@ -1,8 +1,10 @@
 package ${ group }
 
+import groovy.util.logging.Slf4j
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
+@Slf4j
 @SpringBootApplication
 public class Application {
     public static final int DEFAULT_PADDING = 50
