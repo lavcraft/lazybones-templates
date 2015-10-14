@@ -129,7 +129,7 @@ subprojects {
         }
     }
 
-    dockerBUild.dependsOn build
+    dockerBuild.dependsOn build
 
     springBoot {
         executable = true
