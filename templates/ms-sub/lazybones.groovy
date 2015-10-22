@@ -1,4 +1,7 @@
+import java.nio.file.Files
 import java.nio.file.Path
+import java.nio.file.Paths
+import java.nio.file.attribute.PosixFilePermissions
 
 import static java.nio.file.Files.*
 import static java.nio.file.Paths.get
@@ -11,25 +14,36 @@ props.dockerHost = ask("Define value for 'docker_host' [192.168.99.100]: ", "192
 props.projectName = projectDir.name
 
 String mainApplicationFileName = 'Application.groovy'
+String rebuildScriptFileName = 'rebuild.sh'
+String rebuildScriptFileNamePrefix = 'rebuild'
 
 processTemplates "build.gradle", props
 processTemplates "src/main/resources/bootstrap.yml", props
-processTemplates mainApplicationFileName, props
 processTemplates 'Dockerfile', props
 processTemplates 'README.md', props
+processTemplates mainApplicationFileName, props
+processTemplates rebuildScriptFileName, props
 
 String pkgPath = props.group.replace('.' as char, '/' as char)
+Path templatePath = templateDir.toPath()
+Path projectPath = projectDir.toPath()
 
-Path groovySourceDirWithPackage = get projectDir.toPath() as String, 'src/main/groovy/', pkgPath
+Path groovySourceDirWithPackage = get projectPath as String, 'src/main/groovy/', pkgPath
 Path destinationAppFilePath = groovySourceDirWithPackage.resolve mainApplicationFileName
-Path templateApplicationPath = templateDir.toPath() resolve mainApplicationFileName
+Path templateApplicationPath = templatePath.resolve mainApplicationFileName
+Path templateRebuildScriptPath = templatePath.resolve rebuildScriptFileName
 
 groovySourceDirWithPackage.toFile() mkdirs()
 
 try {
     move templateApplicationPath, destinationAppFilePath
+    Path newRebuildScriptPath = projectPath.parent.resolve rebuildScriptFileNamePrefix+'-'+projectDir.name as String
+    if(notExists(newRebuildScriptPath)){
+//        createFile newRebuildScriptPath, PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("rwxr-xr-x"))
+        move templateRebuildScriptPath, newRebuildScriptPath
+    }
 
-    Path newSettingsPath = projectDir.toPath().parent.resolve('settings.gradle')
+    Path newSettingsPath = projectPath.parent.resolve('settings.gradle')
     File newSettingsFile = newSettingsPath.toFile()
 
     if (notExists(newSettingsPath)) {

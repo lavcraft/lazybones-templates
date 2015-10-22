@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./gradlew hippo-service:dB
+./gradlew ${projectName}:dB
 docker-compose up -d
