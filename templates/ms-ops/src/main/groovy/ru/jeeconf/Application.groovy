@@ -1,13 +1,13 @@
-package ${ group }
+package ru.jeeconf
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy
+import zipkin.server.EnableZipkinServer
 
 @SpringBootApplication
-@EnableZuulProxy
 @EnableDiscoveryClient
+@EnableZipkinServer
 public class Application {
     public static final int DEFAULT_PADDING = 50
 

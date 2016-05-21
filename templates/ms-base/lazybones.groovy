@@ -1,11 +1,11 @@
 def props = [:]
 
-props.group = ask("Define value for 'group' [ru.joker]: ", "ru.joker", "group")
-props.version = ask("Define value for 'version' [0.0.1]: ", "0.0.1", "version")
-props.dockerHost = ask("Define value for 'docker_host' [192.168.99.100]: ", "192.168.99.100", "dockerHost")
+props.group = ask("Define value for 'group' [ru.jeeconf]: ", "ru.joker", "group")
+props.version = '0.0.1'
+props.dockerHost = "192.168.99.100"
 props.projectName = props.group.split('\\.').last()
 props.dns = "172.17.42.1"
 
-processTemplates "build.gradle", props
+//processTemplates "build.gradle", props
 processTemplates "docker-compose.yml", props
 processTemplates "settings.gradle", props

@@ -8,9 +8,9 @@ import static java.nio.file.Paths.get
 
 def props = [:]
 
-props.group = ask("Define value for 'group' [ru.joker]: ", "ru.joker", "group")
+props.group = ask("Define value for 'group' [ru.jeeconf]: ", "ru.jeeconf", "group")
 props.version = ask("Define value for 'version' [0.0.1]: ", "0.0.1", "version")
-props.dockerHost = ask("Define value for 'docker_host' [192.168.99.100]: ", "192.168.99.100", "dockerHost")
+props.dockerHost = "192.168.99.100"
 props.projectName = projectDir.name
 
 String mainApplicationFileName = 'Application.groovy'
@@ -18,7 +18,7 @@ String rebuildScriptFileName = 'rebuild.sh'
 String rebuildScriptFileNamePrefix = 'rebuild'
 
 processTemplates "build.gradle", props
-processTemplates "src/main/resources/bootstrap.yml", props
+//processTemplates "src/main/resources/bootstrap.yml", props
 processTemplates 'Dockerfile', props
 processTemplates 'README.md', props
 processTemplates mainApplicationFileName, props

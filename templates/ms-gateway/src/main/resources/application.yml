@@ -1,1 +1,25 @@
-server.port: 9000
+spring:
+  application.name: gateway
+  sleuth:
+    enabled: true
+  zipkin:
+    base-url: http://192.168.99.100:9411
+  rabbitmq:
+    host: ${rabbitmq.host}
+
+server:
+  port: 9000
+
+zipkin:
+  store:
+    type: mem
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+
+logging:
+  level:
+    org.springframework.cloud: off
+    org.springframework.web: off
